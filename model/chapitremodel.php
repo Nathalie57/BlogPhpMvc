@@ -9,9 +9,10 @@ class ChapitreModel extends Model{
 		$sql = "SELECT 
 			ID AS `{{ id }}`, 
 			title AS `{{ title }}`, 
-			published AS `{{ published }}`, 
+			DATE_FORMAT(published, '%d/%m/%Y') AS `{{ published }}`, 
 			content AS `{{ content }}`, 
-			SUBSTR(content, 1, 100) AS `{{ resume }}` 
+			SUBSTR(content, 1, 400) AS `{{ resume }}`,
+			slug AS `{{ slug }}`
 
 			FROM `posts` 
 			WHERE `featured` = 1 AND published IS NOT NULL";
@@ -20,24 +21,59 @@ class ChapitreModel extends Model{
 		$result = $data->fetch();
 
 		return $result;
-		
+
 	}
 
 	public function otherPost(){
 		$sql = "SELECT 
 			ID AS `{{ id }}`, 
 			title AS `{{ title }}`, 
-			published AS `{{ published }}`, 
+			DATE_FORMAT(published, '%d/%m/%Y') AS `{{ published }}`, 
 			content AS `{{ content }}`, 
-			SUBSTR(content, 1, 100) AS `{{ resume }}` 
+			SUBSTR(content, 1, 200) AS `{{ resume }}`,
+			slug AS `{{ slug }}`
 
 			FROM `posts` 
-			WHERE `featured` = 0 AND published IS NOT NULL";
-			// ORDER BY `ID DESC`
-			//LIMIT = 5;
-
+			WHERE `featured` = 0 AND published IS NOT NULL ORDER BY ID DESC LIMIT 4";
 			
+			
+
+		$data = $this->db->query($sql);
+		$result = $data->fetchAll();
+
+		return $result;
+	}
+
+	public function singlePost($slug){
+		$sql = "SELECT
+			ID AS `{{ id }}`,
+			title AS `{{ title }}`, 
+			DATE_FORMAT(published, '%d/%m/%Y') AS `{{ published }}`, 
+			content AS `{{ content }}`,
+			slug AS `{{ slug }}`
+
+			FROM `posts` 
+			WHERE `slug` = '$slug' AND published IS NOT NULL";
 		$data = $this->db->query($sql);
 		$result = $data->fetch();
-	}
+
+		return $result;
+		}
+	
+
+	public function listPost(){
+		$sql = "SELECT
+			ID AS `{{ id }}`,
+			title AS `{{ title }}`, 
+			DATE_FORMAT(published, '%d/%m/%Y') AS `{{ published }}`,
+			slug AS `{{ slug }}`
+			
+			FROM `posts` 
+			WHERE published IS NOT NULL ORDER BY ID DESC";
+
+		$data = $this->db->query($sql);
+		$result = $data->fetchAll();
+
+		return $result;
+		}
 }

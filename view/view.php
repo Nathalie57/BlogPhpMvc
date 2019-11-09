@@ -3,10 +3,15 @@
 class View{
 	public $html;
 	public function __construct($data, $template){
-		$this->html = $this->makeHtml($data, $template);
+		if (isset ($data[0])) {
+			$this->html = $this->makeLoopHtml($data, $template);
+		}
+		else $this->html = $this->makeHtml($data, $template);
 	}
 
 	public function makeHtml($data, $template){
+		global $config;
+		$data["{{ path }}"] = $config["directory"]."/";
 	  return str_replace(
       array_keys($data),
       $data,
