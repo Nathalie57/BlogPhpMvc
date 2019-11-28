@@ -1,3 +1,4 @@
 # projet3b
-ajout tables de commentaires admin
+ajout liste chapitre dans interface admin
+ajout tables de commentaires admin<br/>
 ajout sécurité
