@@ -1,0 +1,42 @@
+<h5>Navigation</h5>
+			<ul>
+				<li><a href="http://localhost/Projet%203b/admin"><em class="fa fa-home"></em> Accueil</a></li>
+				<li><a href="http://localhost/Projet%203b/admin"><em class="fa fa-pencil-square-o"></em> Ajouter un chapitre</a></li>
+				<li><a href="http://localhost/Projet%203b/admin"><em class="fa fa fa-clone"></em> Modération des commentaires</a></li>
+				<li><a href="admin/deconnexion"><em class="fa fa-hand-o-up"></em> Se déconnecter</a></li>
+			</ul>
+		</div>
+		<section id="main-content" class="column column-offset-20">
+			<div class="row grid-responsive">
+				<div class="column page-heading">
+					<div class="large-card">
+						<h1>Bonjour !</h1>
+						<p class="text-large">Bienvenue sur l'interface d'administration de votre site !</p>
+
+			<div class="row grid-responsive">
+				<div class="column ">
+					<div class="card">
+						<div class="card-title">
+							<h4>Vous pouvez modifier le chapitre</h4>
+						</div>
+								
+						<div class="card-block">
+							<form action="" method="post">
+								<fieldset>
+									<input type = "hidden" value="{{ id }}" name="ID">
+									<label for="title">Titre du chapitre :</label>
+									<input type="text" name = "title" id="title" value="{{ title }}"/><br/>
+									<br/>
+									<label for="content">Contenu du chapitre</label><br/>
+									<textarea name = "content" id="content">{{ content }}</textarea><br/><br/>
+									<label for="slug">Slug du chapitre :</label>
+									<input type="text" name = "slug" id="slug" value="{{ slug }}"><br/>
+									<br/>
+									
+									<input class="button-primary" type="submit" value="Publier"/>
+								</fieldset>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>

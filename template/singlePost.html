@@ -20,10 +20,9 @@
 	<section class="post">
 		<header class="major">
 			<span class="date">{{ published }}</span>
-				<h1>Chapitre {{ id }}<br />{{ title }}</h1>
+				<h1>Chapitre {{ idChapitre }}<br />{{ title }}</h1>
 		</header>					
 					
-		<div class="image main"><img src="images/pic01.jpg" alt="" /></div>
 			<p>{{ content }}</p>
 	</section>
 
@@ -34,6 +33,7 @@
 		<label for="author">Votre nom</label><br/>
 		<input type="text" id="author" name="author" required/>
 	</div>
+	<br/>
 	<div>
 		<label for="comment">Votre commentaire</label><br/>
 		<textarea id="comment" name="comment" required></textarea><br/>
@@ -42,5 +42,5 @@
 		<input type="submit" value="Envoyer" />
 	</div>
 	<br/>
-	Cet article contient {{ nComments }} commentaire{{ pluriel }}.</div>
+	
 </div>
