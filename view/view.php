@@ -11,7 +11,12 @@ class View{
 
 	public function makeHtml($data, $template){
 		global $config;
+		global $safeData;
 		$data["{{ path }}"] = $config["directory"]."/";
+		if(count($safeData->uri)>2){
+			$data["{{ fullpath }}"] = "/".$config['directory']."/".$safeData->uri[0]."/".$safeData->uri[1];
+		}
+		else $data["{{ fullpath }}"] = $safeData->uristring;
 	  return str_replace(
       array_keys($data),
       $data,
@@ -28,34 +33,4 @@ class View{
 		return $html;
 	}
 }
-
-
-
-
-
-// class voiture{
-// 	public $couleur;
-
-// 	public function __constructor($marque){
-// 		if ($marque === "dacia") $this->couleur ="blanc";
-// 		if ($marque === "ferrari") $this->couleur ="rouge";
-// 	}
-// }
-
-// $maVoiture = new Voiture("ferrari");
-// echo $maVoiture->couleur; //rouge
-
-
-
-// $vue = new View($data, "commentaire");
-// $monHtml = $vue->html; 
-// $monHtml .= "lmklklmklmklmk";
-// $monHtml2 = $vue->html; 
-
-
-
-// $vue = new View();
-// $monHtml = $vue->makeHtml($data, "commentaire");
-// $monHtml .= "lmklklmklmklmk";
-// $monHtml2 = $vue->makeHtml($data, "commentaire");
 
