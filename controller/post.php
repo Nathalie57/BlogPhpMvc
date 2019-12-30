@@ -13,8 +13,6 @@ class Post{
 
   	public function __construct(){
     $this->model = new ChapitreModel();
-  //	$this->view = new View();
-    //$this->model->featuredPost();
   	}
 
 
@@ -31,10 +29,10 @@ class Post{
 	
 	public function showSinglePost($slug){
 
-		$data = $this->model->singlePost($slug);
-  	$myview = new View($data, "singlePost");
-		$this->idPost = $data["{{ id }}"];
-		$this->title = $data["{{ title }}"];
+	   	$data = $this->model->singlePost($slug);
+  	  $myview = new View($data, "singlePost");
+		  $this->idPost = $data["{{ id }}"];
+		  $this->title = $data["{{ title }}"];
   		return $myview->html;
   	}
 
@@ -47,9 +45,4 @@ class Post{
 
   		return $myview->html;
   	}
-
-	public function allPosts(){
-  		
-  	}
-
 }
