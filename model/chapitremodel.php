@@ -7,12 +7,14 @@ class ChapitreModel extends Model{
 
 	public function featuredPost(){
 		$sql = "SELECT 
-			ID AS `{{ id }}`, 
+			ID AS `{{ id }}`,
+			idChapitre AS `{{ idChapitre }}`, 
 			title AS `{{ title }}`, 
 			DATE_FORMAT(published, '%d/%m/%Y') AS `{{ published }}`, 
 			content AS `{{ content }}`, 
 			SUBSTR(content, 1, 400) AS `{{ resume }}`,
-			slug AS `{{ slug }}`
+			slug AS `{{ slug }}`,
+			featured AS `featured`
 
 			FROM `posts` 
 			WHERE `featured` = 1 AND published IS NOT NULL";
@@ -27,6 +29,7 @@ class ChapitreModel extends Model{
 	public function otherPost(){
 		$sql = "SELECT 
 			ID AS `{{ id }}`, 
+			idChapitre AS `{{ idChapitre }}`, 
 			title AS `{{ title }}`, 
 			DATE_FORMAT(published, '%d/%m/%Y') AS `{{ published }}`, 
 			content AS `{{ content }}`, 
@@ -34,9 +37,7 @@ class ChapitreModel extends Model{
 			slug AS `{{ slug }}`
 
 			FROM `posts` 
-			WHERE `featured` = 0 AND published IS NOT NULL ORDER BY ID DESC LIMIT 4";
-			
-			
+			WHERE `featured` = 0 AND published IS NOT NULL ORDER BY ID DESC LIMIT 4";	
 
 		$data = $this->db->query($sql);
 		$result = $data->fetchAll();
@@ -47,6 +48,7 @@ class ChapitreModel extends Model{
 	public function singlePost($slug){
 		$sql = "SELECT
 			ID AS `{{ id }}`,
+			idChapitre AS `{{ idChapitre }}`, 
 			title AS `{{ title }}`, 
 			DATE_FORMAT(published, '%d/%m/%Y') AS `{{ published }}`, 
 			content AS `{{ content }}`,
@@ -64,6 +66,7 @@ class ChapitreModel extends Model{
 	public function listPost(){
 		$sql = "SELECT
 			ID AS `{{ id }}`,
+			idChapitre AS `{{ idChapitre }}`, 
 			title AS `{{ title }}`, 
 			DATE_FORMAT(published, '%d/%m/%Y') AS `{{ published }}`,
 			slug AS `{{ slug }}`
@@ -76,4 +79,93 @@ class ChapitreModel extends Model{
 
 		return $result;
 		}
+
+	public function newPost($idChapitre, $title, $content, $slug){
+		
+		try{
+		$tab = array(
+			'idChapitre' => $idChapitre, 	
+        	'title' => $title,
+			'content' => $content,
+			'slug' => $slug,
+			'published' => date("Y-m-d"),
+       		'featured' => '1');
+      	
+
+        $sql = "INSERT INTO posts";
+        $sql .= "(`".implode("`, `", array_keys($tab))."`)";
+        $sql .= " VALUES ('".implode("', '", $tab)."') ";
+                 
+        $resultat = $this->db->prepare($sql);
+  
+        $affectedLines = $resultat->execute($tab);
+ 	    $resultat->closeCursor();
+ 		return $affectedLines;
+    }
+    catch(Exception $e){
+       	return [
+     		"succeed" => FALSE,
+        	"data"    => $e
+      	];
+    	}
+	}
+
+	public function deletePost($slug){
+
+		$sql ='DELETE from posts WHERE slug="'.$slug.'"';
+		$data = $this->db->prepare($sql);
+		$result = $data->execute();
+		return $result;
+    }  
+
+    public function updatePost($title, $content, $slug, $ID){
+
+    	try{
+		$tab = array( 	
+        	'title' => $title,
+			'content' => $content,
+			'slug' => $slug,
+			'ID'=> $ID);
+
+		$sql ='UPDATE `posts` SET `title` = :title, `content` = :content, `slug` = :slug WHERE `ID` = :ID';
+                 
+        $resultat = $this->db->prepare($sql);
+        $affectedLines = $resultat->execute($tab);
+      //  die(var_dump($tab));
+ 	    $resultat->closeCursor();
+
+ 		return $affectedLines;
+ 		
+    }
+    catch(Exception $e){
+       	return [
+     		"succeed" => FALSE,
+        	"data"    => $e
+      	];
+    	}
+    }
+
+    public function updateFeaturedPost(){
+
+    	try{
+		$tab = array( 	
+        	'featured' => '1');
+
+		$sql ='UPDATE `posts` SET `featured` = 0 WHERE `featured` = 1';
+                 
+        $resultat = $this->db->prepare($sql);
+        $affectedLines = $resultat->execute($tab);
+      // die(var_dump($sql));
+ 	    $resultat->closeCursor();
+
+ 		return $affectedLines;
+ 		
+    }
+    catch(Exception $e){
+       	return [
+     		"succeed" => FALSE,
+        	"data"    => $e
+      	];
+    	}
+    }
 }
