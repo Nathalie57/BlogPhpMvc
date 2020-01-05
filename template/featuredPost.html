@@ -21,14 +21,14 @@
 		<!-- Nav -->
 			<nav id="nav">
 				<ul class="links">
-					<li class="active"><a href="http://localhost/Projet%203b/">Accueil</a></li>
-					<li><a href="http://localhost/Projet%203b/chapitres">Tous les chapitres</a></li>
-					<li><a href="http://localhost/Projet%203b/quisuisje">Qui suis-je ?</a></li>
+					<li class="active"><a href="/{{ path }}">Accueil</a></li>
+					<li><a href="/{{ path }}chapitres">Tous les chapitres</a></li>
+					<li><a href="/{{ path }}quisuisje">Qui suis-je ?</a></li>
 				</ul>
 			</nav>
 
 		<!-- Main -->
-			<div id="main">
+<div id="main">
 
 <article class="post featured">
 	<header class="major">
@@ -42,8 +42,11 @@
 			</ul>
 </article>
 
+<div id="main">
+
 <section class="posts">
 	{{ otherPost }}
 </section>
 
+</div>
 </div>
