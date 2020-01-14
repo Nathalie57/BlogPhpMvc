@@ -18,7 +18,6 @@ public function showValidateComment($idPost){
  
       $validateComment = $this->commentmodel->validateComment($idPost);	
     
- //     if(isset($validateComment['state'])) $state = $validateComment['state'];
       $html = "";
         foreach($validateComment as $comment){
           $state = $comment['state'];
@@ -26,32 +25,21 @@ public function showValidateComment($idPost){
               
           else $myview = new View($comment, "definitiveComment");
           $html .= $myview->html;
-    //      var_dump($comment);
-  	     }
-       
-  //   die(var_dump($html));
+
       return $html;
-      }
-
-/*public function showDefinitiveComment($idPost){
-
-      $comment = $this->commentmodel->definitiveComment($idPost);   
-      if ($comment) {
-          $myview = new View($comment, "definitiveComment");
-          return $myview->html;
-          }
-      }  */  
+      } 
 
 public function countValidateComment($idPost){
   	
   		$comments = $this->commentmodel->countValidateComment($idPost);
   		$pluriel = "";
       if($comments>1) $pluriel="s";
+
       $data = [
           "{{ nComments }}" => $comments['total'],
           "{{ pluriel }}" => $pluriel
           ];
-    // die(var_dump($comments));     
+
       $myview = new View($data, "countComment");
   		return $myview->html;
   	}
