@@ -6,7 +6,6 @@ require_once "view/view.php";
 
 class Comment{
 	private $commentmodel;
-	private $view;
 
   	public function __construct(){
     $this->commentmodel = new CommentModel();
@@ -53,7 +52,7 @@ public function addComment($author, $comment, $idPost){
 
 public function reportComment($idComment){
 
-     $comment = $this->commentmodel->reportNewComment($idComment);
+     $this->commentmodel->reportNewComment($idComment);
 }
 
 }
