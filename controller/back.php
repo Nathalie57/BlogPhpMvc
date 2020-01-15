@@ -94,7 +94,9 @@ class Back{
 
 	private function effaceChapitre($slug){
 		$chapitre = new AdminPost();
+		$adminpost = new AdminPost();
 		$chapitre->deletePost($slug);
+		$content = $adminpost->makeUpdateIfDeletePost();
 		global $config;
 		header('Location: /'.$config['directory'].'/admin');
 	}

@@ -46,6 +46,9 @@ public function makeUpdatePost($title, $content, $slug, $idChapitre, $ID){
 
 public function deletePost($slug){
 	$this->chapitremodel->deletePost($slug);
-}
+	}
 
+public function makeUpdateIfDeletePost(){
+	$this->chapitremodel->updateIfDeletePost();
+	}
 }
