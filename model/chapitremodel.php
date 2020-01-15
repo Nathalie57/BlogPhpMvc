@@ -118,16 +118,17 @@ class ChapitreModel extends Model{
 		return $result;
     }  
 
-    public function updatePost($title, $content, $slug, $ID){
+    public function updatePost($title, $content, $slug, $idChapitre, $ID){
 
     	try{
 		$tab = array( 	
         	'title' => $title,
 			'content' => $content,
 			'slug' => $slug,
+			'idChapitre' =>$idChapitre,
 			'ID'=> $ID);
 
-		$sql ='UPDATE `posts` SET `title` = :title, `content` = :content, `slug` = :slug WHERE `ID` = :ID';
+		$sql ='UPDATE `posts` SET `title` = :title, `content` = :content, `idChapitre` = :idChapitre,`slug` = :slug WHERE `ID` = :ID';
                  
         $resultat = $this->db->prepare($sql);
         $affectedLines = $resultat->execute($tab);
