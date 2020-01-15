@@ -45,7 +45,7 @@ public function makeUpdatePost($title, $content, $slug, $ID){
 	}
 
 public function deletePost($slug){
-	$data = $this->chapitremodel->deletePost($slug);
+	$this->chapitremodel->deletePost($slug);
 }
 
 }
