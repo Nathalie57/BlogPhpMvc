@@ -6,8 +6,6 @@ require_once "controller/comment.php";
 
 class Front{
 	private $chapitremodel;
-	private $post;
-	
 
 	public function __construct ($uri){
 		$this->chapitremodel = new ChapitreModel();
@@ -58,8 +56,7 @@ class Front{
 		$content = $chapitre->showSinglePost($slug);
 		$content .= $comment->countValidateComment($chapitre->idPost);
 		$content .= $comment->showValidateComment($chapitre->idPost);
-	//	$content .= $comment->showDefinitiveComment($chapitre->idPost);
-		
+	
 
 		global $safeData;
 		if (!is_null($safeData->post["author"])) {
@@ -86,7 +83,7 @@ class Front{
 	
 	private function signalerCommentaire($idComment){
 		$comment = new Comment();
-		$content = $comment->reportComment($idComment);
+		$comment->reportComment($idComment);
 	}
 
 }
