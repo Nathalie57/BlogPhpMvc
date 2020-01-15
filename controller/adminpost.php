@@ -40,8 +40,8 @@ public function showUpdatePost($slug){
   	return $myview->html;
   	}
 
-public function makeUpdatePost($title, $content, $slug, $ID){
-  	$this->chapitremodel->updatePost($title, $content, $slug, $ID);
+public function makeUpdatePost($title, $content, $slug, $idChapitre, $ID){
+  	$this->chapitremodel->updatePost($title, $content, $slug, $idChapitre, $ID);
 	}
 
 public function deletePost($slug){

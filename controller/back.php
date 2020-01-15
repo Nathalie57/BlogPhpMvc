@@ -82,12 +82,11 @@ class Back{
 
 		global $safeData;
 			if (!is_null($safeData->post["title"])) {
-				$updatePost->makeUpdatePost($safeData->post["title"], $safeData->post["content"], $safeData->post["slug"], $safeData->post["ID"]);
+				$updatePost->makeUpdatePost($safeData->post["title"], $safeData->post["content"], $safeData->post["slug"], $safeData->post["idChapitre"], $safeData->post["ID"]);
 
 				global $config;
 				header('Location: /'.$config['directory'].'/admin');
 			}
-			else $this->ack = ["Votre chapitre n'a pas pu être enregistré. Veuillez réessayer !"];
 
 		$this->html = $content;
        	$this->title = "Modifier le chapitre";
