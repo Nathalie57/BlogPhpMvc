@@ -5,22 +5,21 @@ require_once "view/view.php";
 
 
 class Post{
-	private $model;
-	private $view;
+	private $chapitremodel;
 	public $title;
 	public $idPost;
 
 
   	public function __construct(){
-    $this->model = new ChapitreModel();
+    $this->chapitremodel = new ChapitreModel();
   	}
 
 
   	public function showFeaturedPost(){
 
-  		$otherPost = $this->model->otherPost();
+  		$otherPost = $this->chapitremodel->otherPost();
   		$myview = new View($otherPost, "otherPost");
-  		$data = $this->model->featuredPost();	
+  		$data = $this->chapitremodel->featuredPost();	
   		$data["{{ otherPost }}"] = $myview->html;
   		$myview = new View($data, "featuredPost");
 
@@ -29,7 +28,7 @@ class Post{
 	
 	public function showSinglePost($slug){
 
-	   	$data = $this->model->singlePost($slug);
+	   	$data = $this->chapitremodel->singlePost($slug);
   	  $myview = new View($data, "singlePost");
 		  $this->idPost = $data["{{ id }}"];
 		  $this->title = $data["{{ title }}"];
@@ -38,7 +37,7 @@ class Post{
 
 	public function showListPost(){
   		
-  		$listPost = $this->model->listPost();
+  		$listPost = $this->chapitremodel->listPost();
   		$myview = new View($listPost, "listPost");
   		$data["{{ listPost }}"] = $myview->html;
   		$myview = new View($data, "showListPost");
