@@ -132,7 +132,6 @@ class ChapitreModel extends Model{
                  
         $resultat = $this->db->prepare($sql);
         $affectedLines = $resultat->execute($tab);
-      //  die(var_dump($tab));
  	    $resultat->closeCursor();
 
  		return $affectedLines;
@@ -156,7 +155,30 @@ class ChapitreModel extends Model{
                  
         $resultat = $this->db->prepare($sql);
         $affectedLines = $resultat->execute($tab);
-      // die(var_dump($sql));
+ 	    $resultat->closeCursor();
+
+ 		return $affectedLines;
+ 		
+    }
+    catch(Exception $e){
+       	return [
+     		"succeed" => FALSE,
+        	"data"    => $e
+      	];
+    	}
+    }
+
+        public function updateIfDeletePost(){
+
+    	try{
+		$tab = array( 	
+        	'featured' => '0',
+        	'published' => date("Y-m-d"));
+
+		$sql ='UPDATE `posts` SET `featured` = 1 WHERE published IS NOT NULL ORDER BY ID DESC LIMIT 1';
+                 
+        $resultat = $this->db->prepare($sql);
+        $affectedLines = $resultat->execute($tab);
  	    $resultat->closeCursor();
 
  		return $affectedLines;
