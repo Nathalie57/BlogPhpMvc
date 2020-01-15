@@ -10,8 +10,6 @@ require_once "controller/admin.php";
 
 class Back{
 	
-	private $chapitremodel;
-	private $post;
 	public $html;
 	private $title;
 
@@ -27,7 +25,7 @@ class Back{
 		if($this->admin->id === null) $todo = "showLogin";
 		$argument = null;
 		if (isset($uri[1])) $argument = $uri[1];
-		
+
    		$this->$todo($argument);
 			
 		$content = [
@@ -64,16 +62,8 @@ class Back{
 				$writeNewPost->writePost($safeData->post["idChapitre"], $safeData->post["title"], $safeData->post["content"], $safeData->post["slug"]);
 				global $config;
 				header('Location: /'.$config['directory'].'/admin');
-				//
-				//die(var_dump($safeData->post["content"]));
-				/*$this->ack = [
-					"message" => "Votre chapitre a bien été enregistré",
-					"type" => "success"
-				];*/
 			}
-			//header("Location: admin");
-			//else $this->ack = ["Votre chapitre n'a pas pu être enregistré. Veuillez réessayer !"];
-			
+	
 		$content = $adminpost->showAdminListPost();
 		$admincomment = new AdminComment();
 		$content .= $admincomment->showNewComment();
@@ -92,17 +82,9 @@ class Back{
 
 		global $safeData;
 			if (!is_null($safeData->post["title"])) {
-		//die(var_dump($safeData->post));
 				$updatePost->makeUpdatePost($safeData->post["title"], $safeData->post["content"], $safeData->post["slug"], $safeData->post["ID"]);
 
-		//	die(var_dump($safeData->post["title"], $safeData->post["content"], $safeData->post["slug"]));
-				$this->ack = [
-					"message" => "Votre chapitre a bien été enregistré",
-					"type" => "success"
-
-				];
 				global $config;
-				//header('Location: /'.$config['directory'].'/admin/editeChapitre/'.$safeData->post["slug"]);
 				header('Location: /'.$config['directory'].'/admin');
 			}
 			else $this->ack = ["Votre chapitre n'a pas pu être enregistré. Veuillez réessayer !"];
@@ -113,28 +95,28 @@ class Back{
 
 	private function effaceChapitre($slug){
 		$chapitre = new AdminPost();
-		$content = $chapitre->deletePost($slug);
+		$chapitre->deletePost($slug);
 		global $config;
 		header('Location: /'.$config['directory'].'/admin');
 	}
 
 	private function effaceCommentaire($idComment){
 		$comment = new AdminComment();
-		$content = $comment->deleteComment($idComment);
+		$comment->deleteComment($idComment);
 		global $config;
 		header('Location: /'.$config['directory'].'/admin');
 	}
 
 	private function valideNouveauCommentaire($idComment){
 		$comment = new AdminComment();
-		$content = $comment->validateNewComment($idComment);
+		$comment->validateNewComment($idComment);
 		global $config;
 		header('Location: /'.$config['directory'].'/admin');
 	}
 
 	private function valideCommentaireSignale($idComment){
 		$comment = new AdminComment();
-		$content = $comment->validateReportComment($idComment);
+		$comment->validateReportComment($idComment);
 		global $config;
 		header('Location: /'.$config['directory'].'/admin');
 	}
