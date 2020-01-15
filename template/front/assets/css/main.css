@@ -2893,7 +2893,7 @@ input, select, textarea {
 		header > .date {
 			display: block;
 			font-size: 0.8rem;
-			height: 1;
+			height: 1rem;
 			margin: 0 0 1rem 0;
 			position: relative;
 		}
@@ -3913,6 +3913,197 @@ input, select, textarea {
 		@media screen and (max-width: 480px) {
 
 			#main {
+				width: 100%;
+			}
+
+		}
+
+/*accueil*/
+	#grille {
+		background-color: #ffffff;
+		position: relative;
+		margin: 0 auto;
+		width: calc(100% - 4rem);
+		max-width: 72rem;
+		z-index: 2;
+	}
+
+		#grille > * {
+			padding: 4rem 4rem 2rem 4rem ;
+			border-top: solid 2px #eeeeee;
+			margin: 0;
+		}
+
+			#grille > *:first-child {
+				border-top: 0;
+			}
+
+		#grille > footer {
+			text-align: center;
+		}
+
+		#grille > .post {
+			padding: 8rem 8rem 6rem 8rem ;
+		}
+
+			#grille > .post header.major > .date {
+				margin-top: -2rem;
+			}
+
+			#grille > .post header.major > h1, #grille > .post header.major h2 {
+				font-size: 4rem;
+				line-height: 1.1;
+				margin: 0 0 2rem 0;
+			}
+
+			#grille > .post.featured {
+				text-align: center;
+			}
+
+			@media screen and (max-width: 1280px) {
+
+				#grille > .post {
+					padding: 6rem 4rem 4rem 4rem ;
+				}
+
+			}
+
+			@media screen and (max-width: 736px) {
+
+				#grille > .post {
+					padding: 4rem 2rem 2rem 2rem ;
+				}
+
+					#grille > .post header.major > .date {
+						margin-top: -1rem;
+						margin-bottom: 2rem;
+					}
+
+					#grille > .post header.major > h1, #grille > .post header.major h2 {
+						font-size: 2.5rem;
+						line-height: 1.2;
+						margin: 0 0 1.5rem 0;
+					}
+
+			}
+
+		#grille > .posts {
+			display: -moz-flex;
+			display: -webkit-flex;
+			display: -ms-flex;
+			display: flex;
+			-moz-flex-wrap: wrap;
+			-webkit-flex-wrap: wrap;
+			-ms-flex-wrap: wrap;
+			flex-wrap: wrap;
+			-moz-align-items: -moz-stretch;
+			-webkit-align-items: -webkit-stretch;
+			-ms-align-items: -ms-stretch;
+			align-items: stretch;
+			text-align: center;
+			width: 100%;
+			padding: 0;
+		}
+
+			#grille > .posts > * {
+				-moz-flex-shrink: 1;
+				-webkit-flex-shrink: 1;
+				-ms-flex-shrink: 1;
+				flex-shrink: 1;
+				-moz-flex-grow: 0;
+				-webkit-flex-grow: 0;
+				-ms-flex-grow: 0;
+				flex-grow: 0;
+			}
+
+			#grille > .posts > * {
+				width: 50%;
+			}
+
+			#grille > .posts > * {
+				padding: 4rem;
+				width: 50%;
+			}
+
+			#grille > .posts > article {
+				border-color: #eeeeee;
+				border-left-width: 2px;
+				border-style: solid;
+				border-top-width: 2px;
+				text-align: center;
+			}
+
+				#grille > .posts > article > :last-child {
+					margin-bottom: 0;
+				}
+
+				#grille > .posts > article:nth-child(2n - 1) {
+					border-left-width: 0;
+				}
+
+				#grille > .posts > article:nth-child(-n + 2) {
+					border-top-width: 0;
+				}
+
+			@media screen and (max-width: 980px) {
+
+				#grille > .posts > * {
+					width: 50%;
+				}
+
+				#grille > .posts > * {
+					padding: 2.5rem;
+					width: 50%;
+				}
+
+			}
+
+			@media screen and (max-width: 736px) {
+
+				#grille > .posts > * {
+					width: 100%;
+				}
+
+				#grille > .posts > * {
+					padding: 2rem;
+					width: 100%;
+				}
+
+				#grille > .posts > article:nth-child(2n - 1) {
+					border-left-width: 2px;
+				}
+
+				#grille > .posts > article:nth-child(-n + 2) {
+					border-top-width: 2px;
+				}
+
+				#grille > .posts > article:nth-child(n) {
+					border-left-width: 0;
+				}
+
+				#grille > .posts > article:nth-child(-n + 1) {
+					border-top-width: 0;
+				}
+
+				#grille > .posts > article .image {
+					max-width: 25rem;
+					margin-left: auto;
+					margin-right: auto;
+				}
+
+			}
+
+		@media screen and (max-width: 736px) {
+
+			#grille > * {
+				padding: 2rem 2rem 0.1rem 2rem ;
+			}
+
+		}
+
+		@media screen and (max-width: 480px) {
+
+			#grille {
 				width: 100%;
 			}
 
