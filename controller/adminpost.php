@@ -6,8 +6,6 @@ require_once "controller/post.php";
 
 
 class AdminPost{
-	private $model;
-	private $view;
 	public $title;
 	public $idPost;
 
@@ -28,13 +26,12 @@ public function showAdminListPost(){
 
 public function writePost($idChapitre, $title, $content, $slug){
 
-	$writeNewPost = $this->chapitremodel->newPost($idChapitre, $title, $content, $slug);
-	//die(var_dump($writeNewPost));
+	$this->chapitremodel->newPost($idChapitre, $title, $content, $slug);
 	}	
 
 public function updateFeaturedPost(){
-	$updateFeaturedPost = $this->chapitremodel->updateFeaturedPost();
-}	
+	$this->chapitremodel->updateFeaturedPost();
+	}	
 
 public function showUpdatePost($slug){
 	$data = $this->chapitremodel->singlePost($slug);
@@ -44,8 +41,7 @@ public function showUpdatePost($slug){
   	}
 
 public function makeUpdatePost($title, $content, $slug, $ID){
-  	$updatePost = $this->chapitremodel->updatePost($title, $content, $slug, $ID);
-  //	die(var_dump($updatePost));
+  	$this->chapitremodel->updatePost($title, $content, $slug, $ID);
 	}
 
 public function deletePost($slug){
