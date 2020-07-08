@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<meta charset="utf-8">
+	<title>{{ title }}</title>
+
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700"
+		rel="stylesheet">
+
+	<!-- Template Styles -->
+	<link rel="stylesheet" href="/{{ path }}template/back/css/font-awesome.min.css">
+
+	<!-- CSS Reset -->
+	<link rel="stylesheet" href="/{{ path }}template/back/css/normalize.css">
+
+	<!-- Milligram CSS minified -->
+	<link rel="stylesheet" href="/{{ path }}template/back/css/milligram.min.css">
+
+	<!-- Main Styles -->
+	<link rel="stylesheet" href="/{{ path }}template/back/css/styles.css">
+
+	<script
+		src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=w66d2che9yohq2j9g5e7vk7n5gr8fxl3ff8kjjhtjwfud5gg"></script>
+	<script>
+		tinymce.init({
+			selector: 'textarea',
+			height: 600,
+		});
+	</script>
+</head>
+
+<body>
+
+	<div class="navbar">
+		<div class="row">
+			<div class="column column-30 col-site-title"><a href="/{{ path }}" class="site-title float-left">Billet
+					simple pour l'Alaska</a></div>
+			<div class="column column-40 col-search"><a href="#" class="search-btn fa fa-search"></a>
+				<input type="text" name="recherche" value="recherche" placeholder="Recherche" />
+			</div>
+			<div class="column column-30">
+				<div class="user-section"><a href="#">
+						<div class="username">
+							<h4>{{ login }}</h4>
+						</div>
+					</a></div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div id="sidebar" class="column">
+
+			{{ content }}
+
+			<script src="js/chart.min.js"></script>
+			<script src="js/chart-data.js"></script>
+			<script>
+				window.onload = function () {
+					var chart1 = document.getElementById("line-chart").getContext("2d");
+					window.myLine = new Chart(chart1).Line(lineChartData, {
+						responsive: true,
+						scaleLineColor: "rgba(0,0,0,.2)",
+						scaleGridLineColor: "rgba(0,0,0,.05)",
+						scaleFontColor: "#c5c7cc"
+					});
+					var chart2 = document.getElementById("bar-chart").getContext("2d");
+					window.myBar = new Chart(chart2).Bar(barChartData, {
+						responsive: true,
+						scaleLineColor: "rgba(0,0,0,.2)",
+						scaleGridLineColor: "rgba(0,0,0,.05)",
+						scaleFontColor: "#c5c7cc"
+					});
+					var chart4 = document.getElementById("pie-chart").getContext("2d");
+					window.myPie = new Chart(chart4).Pie(pieData, {
+						responsive: true,
+						segmentShowStroke: false
+					});
+					var chart5 = document.getElementById("radar-chart").getContext("2d");
+					window.myRadarChart = new Chart(chart5).Radar(radarData, {
+						responsive: true,
+						scaleLineColor: "rgba(0,0,0,.05)",
+						angleLineColor: "rgba(0,0,0,.2)"
+					});
+					var chart6 = document.getElementById("polar-area-chart").getContext("2d");
+					window.myPolarAreaChart = new Chart(chart6).PolarArea(polarData, {
+						responsive: true,
+						scaleLineColor: "rgba(0,0,0,.2)",
+						segmentShowStroke: false
+					});
+				};
+			</script>
+</body>
+
+</html>
