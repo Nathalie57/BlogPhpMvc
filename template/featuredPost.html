@@ -1,53 +1,56 @@
 <!-- Wrapper -->
-	<div id="wrapper" class="fade-in">
+<div id="wrapper" class="fade-in">
 
-		<!-- Intro -->
-			<div id="intro">
-				<h1>Billet simple<br />
-				pour l'Alaska</h1>
-				<h2>Le dernier roman de Jean Forteroche</h2>
-				<p>Sans cesse à la recherche de nouvelles expériences, j'ai souhaité vous faire découvrir mon dernier roman<br/> sous une forme innovante. Pour vous plonger au coeur de l'histoire, je publierai les chapitres au rythme de mon écriture.<br/>
-				Venez découvrir, chapitre après chapitre, la nouvelle vie de Joshua<br/> qui a décidé de tout quitter pour vivre en harmonie avec la nature en Alaska.</p>
-				<ul class="actions">
-					<li><a href="#header" class="button icon solo fa-arrow-down scrolly">Continue</a></li>
-				</ul>
-			</div>
+	<!-- Intro -->
+	<div id="intro">
+		<h1>Billet simple<br />
+			pour l'Alaska</h1>
+		<h2>Le dernier roman de Jean Forteroche</h2>
+		<p>Sans cesse à la recherche de nouvelles expériences, j'ai souhaité vous faire découvrir mon dernier
+			roman<br /> sous une forme innovante. Pour vous plonger au coeur de l'histoire, je publierai les chapitres
+			au rythme de mon écriture.<br />
+			Venez découvrir, chapitre après chapitre, la nouvelle vie de Joshua<br /> qui a décidé de tout quitter pour
+			vivre en harmonie avec la nature en Alaska.</p>
+		<ul class="actions">
+			<li><a href="#header" class="button icon solo fa-arrow-down scrolly">Continue</a></li>
+		</ul>
+	</div>
 
-		<!-- Header -->
-			<header id="header">
-				<a href="#" class="logo">Billet simple pour l'Alaska</a>
-			</header>
-
-		<!-- Nav -->
-			<nav id="nav">
-				<ul class="links">
-					<li class="active"><a href="/{{ path }}">Accueil</a></li>
-					<li><a href="/{{ path }}chapitres">Tous les chapitres</a></li>
-					<li><a href="/{{ path }}quisuisje">Qui suis-je ?</a></li>
-				</ul>
-			</nav>
-
-		<!-- Main -->
-<div id="main">
-
-<article class="post featured">
-	<header class="major">
-		<span class="date">{{ published }}</span>
-		<h2><a href="chapitre/{{ slug }}">Chapitre {{ idChapitre }}<br />{{ title }}</a></h2>
-		<p>{{ resume }}</p>
+	<!-- Header -->
+	<header id="header">
+		<a href="#" class="logo">Billet simple pour l'Alaska</a>
 	</header>
-		<a href="#" class="image main"><img src="template/front/images/alaska1.jpg" alt="alaska1" /></a>
+
+	<!-- Nav -->
+	<nav id="nav">
+		<ul class="links">
+			<li class="active"><a href="/{{ path }}">Accueil</a></li>
+			<li><a href="/{{ path }}chapitres">Tous les chapitres</a></li>
+			<li><a href="/{{ path }}quisuisje">Qui suis-je ?</a></li>
+		</ul>
+	</nav>
+
+	<!-- Main -->
+	<div id="main">
+
+		<article class="post featured">
+			<header class="major">
+				<span class="date">{{ published }}</span>
+				<h2><a href="chapitre/{{ slug }}">Chapitre {{ idChapitre }}<br />{{ title }}</a></h2>
+				<p>{{ resume }}</p>
+			</header>
+			<a href="#" class="image main"><img src="template/front/images/alaska1.jpg" alt="alaska1" /></a>
 			<ul class="actions special">
 				<li><a href="chapitre/{{ slug }}" class="button large">Lire la suite</a></li>
 			</ul>
-</article>
+		</article>
 
-<div id="grille">
+		<div id="grille">
 
-<section class="posts">
-	{{ otherPost }}
-</section>
+			<section class="posts">
+				{{ otherPost }}
+			</section>
 
-</div>
-</div>
+		</div>
+	</div>
 </div>

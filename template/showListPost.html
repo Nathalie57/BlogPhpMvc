@@ -1,35 +1,35 @@
 <!-- Wrapper -->
-	<div id="wrapper" class="fade-in">
+<div id="wrapper" class="fade-in">
 	<!-- Header -->
-			<header id="header">
-				<a href="/{{ path }}" class="logo">Billet simple pour l'Alaska</a>
-			</header>
+	<header id="header">
+		<a href="/{{ path }}" class="logo">Billet simple pour l'Alaska</a>
+	</header>
 
-		<!-- Nav -->
-			<nav id="nav">
-				<ul class="links">
-					<li><a href="/{{ path }}">Accueil</a></li>
-					<li><a href="/{{ path }}chapitres">Tous les chapitres</a></li>
-					<li><a href="/{{ path }}quisuisje">Qui suis-je ?</a></li>
-				</ul>
-			</nav>
+	<!-- Nav -->
+	<nav id="nav">
+		<ul class="links">
+			<li><a href="/{{ path }}">Accueil</a></li>
+			<li><a href="/{{ path }}chapitres">Tous les chapitres</a></li>
+			<li><a href="/{{ path }}quisuisje">Qui suis-je ?</a></li>
+		</ul>
+	</nav>
 
-		<!-- Main -->
-<div id="main">
+	<!-- Main -->
+	<div id="main">
 
-<h2>Les chapitres</h2>
+		<h2>Les chapitres</h2>
 
-<div class="table-wrapper">
-	<table>
-		<thead>
-			<tr>
-				<th>Numéro de chapitre</th>
-				<th>Nom du chapitre</th>
-				<th>Date de publication</th>
-			</tr>
-		</thead>
-		{{ listPost }}									
-	</table>
+		<div class="table-wrapper">
+			<table>
+				<thead>
+					<tr>
+						<th>Numéro de chapitre</th>
+						<th>Nom du chapitre</th>
+						<th>Date de publication</th>
+					</tr>
+				</thead>
+				{{ listPost }}
+			</table>
 
-</div>
-</div>
+		</div>
+	</div>
